@@ -38,10 +38,12 @@ jobs:
         run: |
           python -m pip install -r tests/requirements.txt
 
-      - name: Run tests
-        working-directory: server
+      - name: Run backend tests
         run: |
-          python -m pytest ../tests/ -v
+          export PYTHONPATH="${GITHUB_WORKSPACE}/server:${PYTHONPATH}"
+          echo "PYTHONPATH=${PYTHONPATH}"
+          python -c "import sys; print('Python path:'); print('\n'.join(sys.path)); import arena; import matchmaking; print('Server modules loaded successfully')"
+          python -m pytest tests/ -v
 
   frontend-build:
     name: Frontend Build
