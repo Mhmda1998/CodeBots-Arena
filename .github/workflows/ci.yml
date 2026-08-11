@@ -39,10 +39,9 @@ jobs:
           python -m pip install -r tests/requirements.txt
 
       - name: Run tests
-        env:
-          PYTHONPATH: ${{ github.workspace }}/server
+        working-directory: server
         run: |
-          python -m pytest tests/ -v
+          python -m pytest ../tests/ -v
 
   frontend-build:
     name: Frontend Build
