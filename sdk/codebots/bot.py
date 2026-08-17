@@ -17,7 +17,7 @@ class State:
     """
     # Self stats
     my_health: int = 100
-    my_energy: int = 50
+    my_energy: int = 0
     my_position: int = 0  # -5 .. +5 on a horizontal axis
     my_special_cooldown: int = 0  # turns until special is ready
 
